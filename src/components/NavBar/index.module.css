@@ -1,0 +1,198 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  flex-grow: inherit;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  height: 44px;
+  border-bottom: 1px solid #414144;
+
+  color: #a1a1aa;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.arrow {
+  margin-left: 60px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  min-width: 100%;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.bord1 {
+  width: 234px;
+  display: flex;
+  flex-direction: row;
+  border-right: 1px solid #414144;
+}
+
+.item {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  color: inherit;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.name {
+  margin: 0;
+
+  font-family: "Roboto";
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.abbr {
+  margin: 0;
+
+  font-family: "Roboto";
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.btn:focus {
+  color: #ffffff;
+}
+
+.full {
+  height: 21px;
+  padding: 0;
+  margin: 0;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #ffffff;
+}
+
+.bord2 {
+  width: 312px;
+  border-right: 1px solid #414144;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar {
+  max-width: 234px;
+  padding: 0;
+  flex-grow: 1;
+  border-right: 1px solid #414144;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  height: 32px;
+  margin: 0;
+
+  cursor: pointer;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #ffffff;
+}
+
+.table div:first-child{
+  margin-left: 10px;
+
+}
+
+.table div:last-child{
+  margin-right: 10px;
+
+}
+
+.table p{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 12px 12px;
+  gap: 10px;
+  border-bottom: 1px solid #a1a1aa;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+
+}
+
+.table img{
+  cursor: pointer;
+  padding-top: 2px;
+
+}
+
+h1 {
+  color: white;
+}
+
+.active {
+  color: #ffffff;
+}
+
+.navIcon {
+  max-width: 22px !important;
+  max-height: 22px !important;
+  margin-left: 20px;
+  margin-right: 14px;
+}
+
+.table {
+  padding: 0;
+  flex-grow: inherit;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+
+  color: #a1a1aa;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 0.5fr 3.5fr 1fr 1fr 1fr 1fr;
+}
+
+

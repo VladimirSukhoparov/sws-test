@@ -1,0 +1,64 @@
+.box {
+  height: 44px;
+  display: flex;
+  flex-direction: row;
+
+  border: 1px solid #414144;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+
+  color: #a1a1aa;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.nav1 {
+  border-bottom: 2px solid transparent;
+  margin-left: 30px;
+  width: 66px;
+  margin-top: 12px;
+  color: #a1a1aa;
+}
+
+.nav2 {
+  border-bottom: 2px solid transparent;
+  margin-left: 30px;
+  width: 79px;
+  margin-top: 12px;
+  color: #a1a1aa;
+}
+
+.text {
+  cursor: pointer;
+
+  color: inherit;
+  border: none;
+  background: none;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.view {
+  padding: 0;
+  width: 66px;
+}
+
+.control {
+  padding: 0;
+  width: 79px;
+}
+
+.active {
+  border-bottom: 2px solid #ffffff;
+  color: #ffffff;
+}

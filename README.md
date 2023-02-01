@@ -1,4 +1,4 @@
-# Test task for Funbox.ru
+# Test task
 
 Test task from Seven Winds Studio
 ![screenshot](./readme-assets/app.png)

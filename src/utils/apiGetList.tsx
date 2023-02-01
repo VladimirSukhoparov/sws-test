@@ -4,8 +4,8 @@ interface IeID {
 }
 
 const eID: IeID = {
-  'id': 33904,
-  'rowName': "ad3cdf45-6410-4736-8bbb-6fb8cdf0cf9e",
+  id: 33904,
+  rowName: "ad3cdf45-6410-4736-8bbb-6fb8cdf0cf9e",
 };
 
 async function getList() {

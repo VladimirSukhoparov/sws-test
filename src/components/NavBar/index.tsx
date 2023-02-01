@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 
 import api from "../../utils/apiGetList";
+import createStr from "../../utils/create";
+import deleteStr from "../../utils/delete";
+import updateStr from "../../utils/update";
 
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
@@ -12,22 +15,53 @@ import styles from "./index.module.css";
 export const NavBar = () => {
   const [active, setActive] = useState(false);
   const [nav, setNav] = useState("");
-  const [list, setList] = useState();
-  const { writeLS, readLS } = useLocalStorage();
+  const [list, setList] = useState<any[]>([]);
+  const [toggle, setToggle] = useState(true);
+  const [visible, setVisible] = useState(false);
 
+  const { writeLS, readLS } = useLocalStorage();
   let localString = readLS("api");
-  let arr = [null];
-  let objString=localString.reduce((a:{}, b:{}) => Object.assign(a, b), {})
-    
-  const handleClick = () => {
-    if (!list || localString === arr) {
-      api.then((list) => {
-        setList(list);
-        writeLS("api", list);
-      });
-    }
+
+  interface IeID {
+    id: number;
+    rowName: string;
+  }
+
+  const eID: IeID = {
+    id: 33904,
+    rowName: "ad3cdf45-6410-4736-8bbb-6fb8cdf0cf9e",
   };
-    
+
+  const url = "http://185.244.172.108:8081";
+
+  useEffect(() => {
+    api.then((list) => {
+      setList(list);
+    });
+  }, [nav, localString]);
+
+  function handleClick() {
+    localString.length === 0 && writeLS("api", list);
+  }
+
+  function updateString() {
+    updateStr(eID, url, list, setList, localString);
+    writeLS("api", list);
+    localString = readLS("api");
+  }
+
+  function deleteString() {
+    deleteStr(eID, url, list, setList);
+    writeLS("api", list);
+    localString = readLS("api");
+  }
+
+  function createString() {
+    createStr(eID, url, list, setList);
+    writeLS("api", list);
+    localString = readLS("api");
+  }
+
   return (
     <div className={styles.nav}>
       <div className={styles.box}>
@@ -129,31 +163,184 @@ export const NavBar = () => {
             <div className={styles.level}>
               <p>Уровень</p>
               <p>
-                <img src={require("../../image/article.svg").default} alt="mySVG"/> 
-                <img src={require("../../image/trash.svg").default} alt="mySVG"/> 
+                <img
+                  src={require("../../image/article.svg").default}
+                  alt="mySVG"
+                  onMouseOver={() => {
+                    setVisible(true);
+                  }}
+                  onClick={() => {
+                    createString();
+                  }}
+                />
+                {visible && (
+                  <img
+                    src={require("../../image/trash.svg").default}
+                    alt="mySVG"
+                    onMouseOut={() => {
+                      setVisible(false);
+                    }}
+                    onClick={() => {
+                      deleteString();
+                    }}
+                  />
+                )}
               </p>
             </div>
             <div className={styles.title}>
               <p>Наименование работ</p>
-              <p>
-                {objString['rowName']}
-              </p>
+              {toggle ? (
+                <p
+                  onDoubleClick={() => {
+                    setToggle(false);
+                  }}
+                >
+                  {list[0]?.rowName}
+                </p>
+              ) : (
+                <p className={styles.pad}>
+                  <input
+                    type="text"
+                    defaultValue={list[0]?.rowName}
+                    className={styles.input}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") {
+                        updateString();
+                        setToggle(true);
+                        event.preventDefault();
+                        event.stopPropagation();
+                      }
+                    }}
+                    onChange={(e) => {
+                      list[0].rowName = e.target.value;
+                    }}
+                  />
+                </p>
+              )}
             </div>
             <div className={styles.basic}>
               <p>Основная з/п</p>
-              <p>{objString['salary']}</p>
+              {toggle ? (
+                <p
+                  onDoubleClick={() => {
+                    setToggle(false);
+                  }}
+                >
+                  {list[0]?.salary}
+                </p>
+              ) : (
+                <p className={styles.pad}>
+                  <input
+                    type="text"
+                    defaultValue={list[0]?.salary}
+                    className={styles.input}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") {
+                        updateString();
+                        setToggle(true);
+                        event.preventDefault();
+                        event.stopPropagation();
+                      }
+                    }}
+                    onChange={(e) => {
+                      list[0].salary = e.target.value;
+                    }}
+                  />
+                </p>
+              )}
             </div>
             <div className={styles.equip}>
               <p>Оборудование</p>
-              <p>{objString['equipmentCosts']}</p>
+              {toggle ? (
+                <p
+                  onDoubleClick={() => {
+                    setToggle(false);
+                  }}
+                >
+                  {list[0]?.equipmentCosts}
+                </p>
+              ) : (
+                <p className={styles.pad}>
+                  <input
+                    type="text"
+                    defaultValue={list[0]?.equipmentCosts}
+                    className={styles.input}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") {
+                        updateString();
+                        setToggle(true);
+                        event.preventDefault();
+                        event.stopPropagation();
+                      }
+                    }}
+                    onChange={(e) => {
+                      list[0].equipmentCosts = e.target.value;
+                    }}
+                  />
+                </p>
+              )}
             </div>
             <div className={styles.overheads}>
               <p>Накладные расходы</p>
-              <p>{objString['overheads']}</p>
+              {toggle ? (
+                <p
+                  onDoubleClick={() => {
+                    setToggle(false);
+                  }}
+                >
+                  {list[0]?.overheads}
+                </p>
+              ) : (
+                <p className={styles.pad}>
+                  <input
+                    type="text"
+                    defaultValue={list[0]?.overheads}
+                    className={styles.input}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") {
+                        updateString();
+                        setToggle(true);
+                        event.preventDefault();
+                        event.stopPropagation();
+                      }
+                    }}
+                    onChange={(e) => {
+                      list[0].overheads = e.target.value;
+                    }}
+                  />
+                </p>
+              )}
             </div>
             <div className={styles.profit}>
               <p>Сметная прибыль</p>
-              <p>{objString['estimatedProfit']}</p>
+              {toggle ? (
+                <p
+                  onDoubleClick={() => {
+                    setToggle(false);
+                  }}
+                >
+                  {list[0]?.estimatedProfit}
+                </p>
+              ) : (
+                <p className={styles.pad}>
+                  <input
+                    type="text"
+                    defaultValue={list[0]?.estimatedProfit}
+                    className={styles.input}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") {
+                        updateString();
+                        setToggle(true);
+                        event.preventDefault();
+                        event.stopPropagation();
+                      }
+                    }}
+                    onChange={(e) => {
+                      list[0].estimatedProfit = e.target.value;
+                    }}
+                  />
+                </p>
+              )}
             </div>
           </div>
         )}

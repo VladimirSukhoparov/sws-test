@@ -103,7 +103,8 @@
 }
 
 .navbar {
-  max-width: 234px;
+  min-width: 234px;
+
   padding: 0;
   flex-grow: 1;
   border-right: 1px solid #414144;
@@ -131,21 +132,20 @@ li {
   color: #ffffff;
 }
 
-.table div:first-child{
+.table div:first-child {
   margin-left: 10px;
-
 }
 
-.table div:last-child{
+.table div:last-child {
   margin-right: 10px;
-
 }
 
-.table p{
+.table p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0px 12px 12px;
+  padding: 12px;
+  margin: 0;
   gap: 10px;
   border-bottom: 1px solid #a1a1aa;
 
@@ -154,13 +154,11 @@ li {
   font-weight: 400;
   font-size: 14px;
   line-height: 130%;
-
 }
 
-.table img{
+.table img {
   cursor: pointer;
   padding-top: 2px;
-
 }
 
 h1 {
@@ -195,4 +193,37 @@ h1 {
   grid-template-columns: 0.5fr 3.5fr 1fr 1fr 1fr 1fr;
 }
 
+.input:focus-visible {
+  background: none;
+  width: 100%;
+  border: 1px solid #414144;
+  border-radius: 5px;
 
+  margin: 0;
+  padding: 3px;
+
+  color: #71717a;
+
+  outline: none;
+}
+
+.input {
+  border: 1px solid #414144;
+  border-radius: 5px;
+  background: none;
+  width: 100%;
+  margin: 0;
+  padding: 3px;
+  
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  
+  color: #71717a;
+}
+
+.pad {
+  padding: 9px 9px !important;
+}
